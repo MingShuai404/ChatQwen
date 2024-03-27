@@ -1,7 +1,7 @@
 #include "ChatService.h"
 
 /**
- * \param.
+ * \code 保存COnversation.
  */
 void ChatService::SaveConversation(
     const std::string& cid, const std::string& title,
@@ -13,9 +13,6 @@ void ChatService::SaveConversation(
         if (!result.empty()) {
           callback_(result.at(0));
         } else {
-          LOG_DEBUG << "---------------------";
-          LOG_DEBUG << "insert : " << title_;
-          LOG_DEBUG << "---------------------";
           // 插入conversation后返回
           qwen_chat::Conversation conv;
           conv.setCid(cid_), conv.setTitle(title_);
@@ -27,10 +24,7 @@ void ChatService::SaveConversation(
 }
 
 /**
- * \param cid.
- * \param ai_msg.
- * \param human_msg.
- * \param callback   异步回调
+* \code 保存问题和回复
  */
 void ChatService::SaveMessage(
     const std::string& cid, const std::string& ai_msg,
@@ -54,29 +48,10 @@ void ChatService::SaveMessage(
     }
   };
   GetConversation(cid, find_by);
-  // 异步调用
-  // auto find_one = [ai_msg_ = std::move(ai_msg),
-  //                 human_msg_ = std::move(human_msg),
-  //                 callback_ = std::move(callback),
-  //                 this](const qwen_chat::Conversation conv) {
-  //  qwen_chat::History history;
-  //  history.setConvId(conv.getValueOfId());
-  //  history.setAiMsg(ai_msg_);
-  //  history.setHumanMsg(human_msg_);
-  //  history.setCreateTime(trantor::Date::now());
-
-  //  history_mapper.insert(history, callback_,
-  //  handler_impl::DbExceptionHandler);
-  //};
-  //// 异步调用
-  // conversation_mapper.findOne(
-  //     orm::Criteria("cid", orm::CompareOperator::EQ, cid), find_one,
-  //     handler_impl::DbExceptionHandler);
 }
 
 /**
- * \param cid.
- * \param callback response.
+ * \code 获取历史提问.
  */
 void ChatService::GetHistotyMessage(
     const std::string& cid,
@@ -96,7 +71,7 @@ void ChatService::GetHistotyMessage(
 }
 
 /**
- * \param callback.
+ * \code 获取Conversation.
  */
 void ChatService::GetConversation(
     const std::string& cid,

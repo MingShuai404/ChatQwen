@@ -31,6 +31,8 @@ class ChatController : public drogon::HttpController<ChatController> {
   ADD_METHOD_TO(ChatController::GenerateId, "/api/generate/id", Post);
   ADD_METHOD_TO(ChatController::GenerateText,
                 "/api/chat/{1:id}?prompt={2:prompt}", Get);
+  ADD_METHOD_TO(ChatController::RepeatGenerateText, "/api/chat/repeat/{1:id}",
+                Get);
   ADD_METHOD_TO(ChatController::StopGenerateText, "/api/stop/chat/{1:id}", Put);
   ADD_METHOD_TO(ChatController::GetHistory, "/api/conv/{1:id}", Get);
   ADD_METHOD_TO(ChatController::GetConversationTitle, "/api/chat/title/{1:id}",
@@ -44,12 +46,13 @@ class ChatController : public drogon::HttpController<ChatController> {
   // 生成文本
   void GenerateText(const HttpRequestPtr &req,
                     std::function<void(const HttpResponsePtr &)> &&callback,
-                    std::string &&id, std::string &&prompt);
+                    std::string &&id, std::string &&prompt) const;
 
   // 生成文本
-  void GenerateText(const HttpRequestPtr &req,
-                    std::function<void(const HttpResponsePtr &)> &&callback,
-                    std::string &&id, std::string &&prompt);
+  void RepeatGenerateText(
+      const HttpRequestPtr &req,
+      std::function<void(const HttpResponsePtr &)> &&callback,
+      std::string &&id) const;
 
   // 停止生成文本
   void StopGenerateText(const HttpRequestPtr &req,
@@ -57,10 +60,9 @@ class ChatController : public drogon::HttpController<ChatController> {
                         std::string &&id) const;
 
   // 生成其他会话
-  void GetHistory(
-      const HttpRequestPtr &req,
-      std::function<void(const HttpResponsePtr &)> &&callback,
-      std::string &&id) const;
+  void GetHistory(const HttpRequestPtr &req,
+                  std::function<void(const HttpResponsePtr &)> &&callback,
+                  std::string &&id) const;
 
   // 生成会话标题
   void GetConversationTitle(
