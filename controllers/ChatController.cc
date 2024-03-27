@@ -1,7 +1,7 @@
 #include "ChatController.h"
 
 /**
- * \code 该路径用于生成每个Conversation ID.
+ * @brief 该路径用于生成每个Conversation ID.
  */
 void ChatController::GenerateId(
     const HttpRequestPtr &req,
@@ -12,7 +12,7 @@ void ChatController::GenerateId(
 }
 
 /**
- * \code 该路径用于生成文本.
+ * @brief 该路径用于生成文本.
  */
 void ChatController::GenerateText(
     const HttpRequestPtr &req,
@@ -89,7 +89,7 @@ void ChatController::GenerateText(
 }
 
 /**
- * \code 该路径用于重新生成文本.
+ * @brief 该路径用于重新生成文本.
  */
 void ChatController::RepeatGenerateText(
     const HttpRequestPtr &req,
@@ -123,6 +123,7 @@ void ChatController::RepeatGenerateText(
         input["messages"].append(human);
         LOG_DEBUG << input.toStyledString();
 
+        // 由于套用的GPT的前端模板 前端模型跟数据库结构不同 需要做一点操作
         auto async_generate =
             [callback_ = std::move(callback_), cid_ = std::move(cid),
              last_prompt_ = std::move(last_prompt)](
@@ -163,7 +164,7 @@ void ChatController::RepeatGenerateText(
 }
 
 /**
- * \code 该路径用于停止生成文本.
+ * @brief 该路径用于停止生成文本.
  */
 void ChatController::StopGenerateText(
     const HttpRequestPtr &req,
@@ -173,7 +174,7 @@ void ChatController::StopGenerateText(
 }
 
 /**
- * \code 该路径用于获取各个Conversation的历史记录.
+ * @brief 该路径用于获取各个Conversation的历史记录.
  */
 void ChatController::GetHistory(
     const HttpRequestPtr &req,
@@ -223,7 +224,7 @@ void ChatController::GetHistory(
 }
 
 /**
- * \code 该路径用于返回标题.
+ * @brief 该路径用于返回标题.
  */
 void ChatController::GetConversationTitle(
     const HttpRequestPtr &req,
@@ -236,6 +237,7 @@ void ChatController::GetConversationTitle(
   auto async_get_conv = [callback_ = std::move(callback)](
                             std::vector<qwen_chat::Conversation> convs_res) {
     auto async_resp = HttpResponse::newAsyncStreamResponse(
+        // 由于套用的GPT的前端模板 前端模型跟数据库结构不同 需要做一点操作
         [convs_res_ = std::move(convs_res)](ResponseStreamPtr stream) {
           if (!convs_res_.empty()) {
             std::string_view title = convs_res_.at(0).getValueOfTitle();

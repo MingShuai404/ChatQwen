@@ -1,7 +1,7 @@
 #include "ChatService.h"
 
 /**
- * \code 保存COnversation.
+ * @brief 保存Conversation.
  */
 void ChatService::SaveConversation(
     const std::string& cid, const std::string& title,
@@ -24,7 +24,7 @@ void ChatService::SaveConversation(
 }
 
 /**
-* \code 保存问题和回复
+* @brief 保存问题和回复
  */
 void ChatService::SaveMessage(
     const std::string& cid, const std::string& ai_msg,
@@ -51,7 +51,7 @@ void ChatService::SaveMessage(
 }
 
 /**
- * \code 获取历史提问.
+ * @brief 获取历史提问.
  */
 void ChatService::GetHistotyMessage(
     const std::string& cid,
@@ -71,7 +71,7 @@ void ChatService::GetHistotyMessage(
 }
 
 /**
- * \code 获取Conversation.
+ * @brief 获取Conversation.
  */
 void ChatService::GetConversation(
     const std::string& cid,
