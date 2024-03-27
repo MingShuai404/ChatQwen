@@ -11,7 +11,7 @@ using namespace drogon;
 using namespace drogon_model;
 
 /**
- * @brief ÓÉÓÚ³Ö¾Ã²ã²ÉÓÃµÄ¾ùÎªÒì²½½Ó¿Ú Òò´ËService·½·¨Ò²¾ùÎªÒì²½·½·¨.
+ * @brief ç”±äºæŒä¹…å±‚é‡‡ç”¨çš„å‡ä¸ºå¼‚æ­¥æ¥å£ å› æ­¤Serviceæ–¹æ³•ä¹Ÿå‡ä¸ºå¼‚æ­¥æ–¹æ³•.
  */
 class ChatService {
  private:
@@ -23,9 +23,9 @@ class ChatService {
 
  public:
   /**
-   * @brief ¼¸¸ö·şÎñ¶¼²ÉÓÃÒì²½»Øµ÷.
-   * @brief ÓÉÓÚ²»Ì«Çå³ş¿ò¼ÜÉè¼Æ Òò´Ëµ÷ÓÃµÄorm·½·¨¾ùÎªfindBy
-   * Í¨¹ı½á¹ûstd::vectorµÄ·Ç¿ÕÅĞ¶Ï±£Ö¤Òì³£°²È«
+   * @brief å‡ ä¸ªæœåŠ¡éƒ½é‡‡ç”¨å¼‚æ­¥å›è°ƒ.
+   * @brief ç”±äºä¸å¤ªæ¸…æ¥šæ¡†æ¶è®¾è®¡ å› æ­¤è°ƒç”¨çš„ormæ–¹æ³•å‡ä¸ºfindBy
+   * é€šè¿‡ç»“æœstd::vectorçš„éç©ºåˆ¤æ–­ä¿è¯å¼‚å¸¸å®‰å…¨
    */
   void SaveConversation(const std::string& cid, const std::string& title,
                         std::function<void(qwen_chat::Conversation)>&&);

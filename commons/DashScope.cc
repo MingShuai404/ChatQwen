@@ -1,6 +1,6 @@
 #include "DashScope.h"
 
-// ²»¿ªÆôSSE
+// ä¸å¼€å¯SSE
 void DashScope::Generate(
     const std::string& model, const Json::Value& input,
     std::function<void(ReqResult, const HttpResponsePtr&)>&& callback) {
@@ -20,9 +20,9 @@ void DashScope::Generate(
 }
 
 /**
- * @brief ²¹³ätokenĞÅÏ¢.
+ * @brief è¡¥å……tokenä¿¡æ¯.
  */
-std::string_view DashScope::kKey = "sk-33b459f6132b45d98678e4f1a41a14d9"; // tokenÒÑ·ÏÆú
+std::string_view DashScope::kKey = "sk-33b459f6132b45d98678e4f1a41a14d9"; // tokenå·²åºŸå¼ƒ
 std::string_view DashScope::kHost = "https://dashscope.aliyuncs.com";
 std::string_view DashScope::kGenerationPath =
     "/api/v1/services/aigc/text-generation/generation";

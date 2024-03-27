@@ -1,7 +1,7 @@
 #include "ChatService.h"
 
 /**
- * @brief ±£´æConversation.
+ * @brief ä¿å­˜Conversation.
  */
 void ChatService::SaveConversation(
     const std::string& cid, const std::string& title,
@@ -13,7 +13,7 @@ void ChatService::SaveConversation(
         if (!result.empty()) {
           callback_(result.at(0));
         } else {
-          // ²åÈëconversationºó·µ»Ø
+          // æ’å…¥conversationåè¿”å›
           qwen_chat::Conversation conv;
           conv.setCid(cid_), conv.setTitle(title_);
           conversation_mapper.insert(conv, callback_,
@@ -24,7 +24,7 @@ void ChatService::SaveConversation(
 }
 
 /**
-* @brief ±£´æÎÊÌâºÍ»Ø¸´
+* @brief ä¿å­˜é—®é¢˜å’Œå›å¤
  */
 void ChatService::SaveMessage(
     const std::string& cid, const std::string& ai_msg,
@@ -51,7 +51,7 @@ void ChatService::SaveMessage(
 }
 
 /**
- * @brief »ñÈ¡ÀúÊ·ÌáÎÊ.
+ * @brief è·å–å†å²æé—®.
  */
 void ChatService::GetHistotyMessage(
     const std::string& cid,
@@ -71,7 +71,7 @@ void ChatService::GetHistotyMessage(
 }
 
 /**
- * @brief »ñÈ¡Conversation.
+ * @brief è·å–Conversation.
  */
 void ChatService::GetConversation(
     const std::string& cid,

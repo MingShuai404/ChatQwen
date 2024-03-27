@@ -76,7 +76,7 @@ target_sources(${PROJECT_NAME}
 
 # ##############################################################################
 
-# ½«configÓëstatic_sources¸´ÖÆµ½buildÄ¿Â¼ÏÂÓë¿ÉÖ´ĞĞÎÄ¼şÍ¬¼¶
+# å°†configä¸static_sourceså¤åˆ¶åˆ°buildç›®å½•ä¸‹ä¸å¯æ‰§è¡Œæ–‡ä»¶åŒçº§
 # file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/static_sources config.json DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 add_subdirectory(test)
